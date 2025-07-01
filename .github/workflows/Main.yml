@@ -1,0 +1,29 @@
+# A simple action usage
+name: Build Kernel
+on:
+  workflow_dispatch:
+
+jobs:
+  Build-Kernel:
+    strategy:
+      fail-fast: false
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+    - name: Build Kernel
+      uses: rasgaxota572/kernel_build_action@main
+      with:
+          kernel-url: https://github.com/alessandroaraujo5/kernel_motorola_sm6225.git
+          kernel-dir: bka
+          kernel-branch: bka
+          config: bengal-perf_defconfig
+          arch: arm64
+          aosp-gcc: true
+          aosp-clang: true
+          ksu: true
+          kvm: true
+          android-version: 15
+          aosp-clang-version: r416183b1
+          anykernel3: true
